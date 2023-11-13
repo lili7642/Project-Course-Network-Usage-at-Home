@@ -21,9 +21,14 @@ df[['Src IP Addr', 'Src Port']] = df['Src IP Addr:Port'].str.split(':', n=1, exp
 df[['Dst IP Addr', 'Dst Port']] = df['Dst IP Addr:Port'].str.split(':', n=1, expand=True)
 "Drop old combined column"
 df = df.drop(columns=["Src IP Addr:Port", "Dst IP Addr:Port","Flows"])
-"Rename columns"
+# Rename columns
 df = df.rename(columns={"seen": "Time", "Date first": "Date"})
 print(df.head(415))
 
 ## ====================================================================
  
+
+## ========= IMPLEMENT AUTOMATED REVERSE DNS LOOKUP ===================
+
+
+## ====================================================================
