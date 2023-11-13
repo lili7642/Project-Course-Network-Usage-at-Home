@@ -1,7 +1,34 @@
-## PROJECT COURSE: NETWORK USAGE AT HOME
+# PROJECT COURSE: NETWORK USAGE AT HOME
+
+## Time Log
+
+### Week 45
+#### Thursday 9/11
+We all read the corresponding information given to us, to familiarise ourself with the project goal and linguistics. Markus implemented a psuedo code for reverese DNS lookup as well as a Dataframe.
+
+Markus: 20:00-23:00 (3 hours)
 
 
+#### Friday 10/11
+Got our dataset (only on Markus computer). We started familiarise ourself with the data and began looking at ways we could handle and process the data safely, which will be discussed with Mike and Martin. A Latex document were created and worked upon.
 
-### Log
+Linus: 11:00-16:00 (5 hours)
+Markus: 11:00-16:00 (5 hours)
+Samuel: 11:00-16:00 (5 hours)
 
-Satt i skolan 11-12:40
+#### Week summary:
+This week we got access to the dataset and researched some classification approaches. We are leaning towards starting with reverse DNS lookup, and other services such as “whois”, but we first have to decide if these are safe to use with the dataset. 
+We also wrote some simple code to read the data as a DataFrame in Python, and automate the reverse DNS lookup with the python “socket” module.
+Finally, we have started writing the simple outlines and introduction for the report in LaTeX.
+
+### Week 46
+#### Monday 13/11
+Safely transfered the dataset to all participants using an USB-stick and encrypted maps. Started a private Git and began creating code for reading the data as a Dataframe. More work on the report.
+
+Jesper: 12:00-
+Linus: 11:30-
+Markus: 12:00-
+Samuel: 12:00-
+
+#### Tuesday 14/11
+Meeting with Mike and Martin.
