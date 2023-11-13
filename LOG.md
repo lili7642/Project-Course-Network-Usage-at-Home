@@ -23,7 +23,7 @@ Finally, we have started writing the simple outlines and introduction for the re
 
 ### Week 46
 #### Monday 13/11
-Safely transfered the dataset to all participants using an USB-stick and encrypted maps. Started a private Git and began creating code for reading the data as a Dataframe. More work on the report.
+Safely transfered the dataset to all participants using an USB-stick and encrypted maps. Started a private Git and began creating code for reading the data as a Dataframe. More work on the report. Can't implement anything until our meeting.
 
 Jesper: 12:00-
 Linus: 11:30-
