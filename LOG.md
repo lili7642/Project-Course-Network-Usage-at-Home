@@ -25,10 +25,10 @@ Finally, we have started writing the simple outlines and introduction for the re
 #### Monday 13/11
 Safely transfered the dataset to all participants using an USB-stick and encrypted maps. Started a private Git and began creating code for reading the data as a Dataframe. More work on the report. Can't implement anything until our meeting.
 
-Jesper: 12:00-
-Linus: 11:30-
-Markus: 12:00-
-Samuel: 12:00-
+Jesper: 12:00-16:00(4 hours)
+Linus: 11:30-16:00 (4.5 hours)
+Markus: 12:00-16:00 (4 hours)
+Samuel: 12:00-16:00 (4 hours)
 
 #### Tuesday 14/11
 Meeting with Mike and Martin.
