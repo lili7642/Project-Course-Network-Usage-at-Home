@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from datetime import datetime, timedelta
 
 
 print("Hello World!")
@@ -26,8 +27,15 @@ df = df.rename(columns={"seen": "Time", "Date first": "Date"})
 print(df.head(415))
 
 ## ====================================================================
- 
+def create_datetime(date_str, time_str):
+    date_obj = datetime.strptime(date_str, "%Y-%m-%d")
+    time_obj = datetime.strptime(time_str, "%H:%M:%S.%f")
+    datetime_obj = date_obj + timedelta(hours = time_obj.hour, minutes=time_obj.minute, seconds = time_obj.second)
 
+    return datetime_obj
+
+randomdatapoint = df.iloc[0]
+print(create_datetime(randomdatapoint["Date"], randomdatapoint["Time"]))
 ## ========= IMPLEMENT AUTOMATED REVERSE DNS LOOKUP ===================
 
 
