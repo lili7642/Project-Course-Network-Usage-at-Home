@@ -39,9 +39,9 @@ Markus: 13:30-16:00 (2.5 hours)
 Samuel: 13:30-16:00 (2.5 hours)
 
 #### Wednesday 14/11
+Continued to preprocess data. Used socket for reverse DNS lookup, and manually did some using dig. Began doing a DB-scan for clustering flows based on time. Worked on the report.
 
-
-Jesper: 10:00
-Linus: 10:00
-Markus: 10:00
-Samuel: 10:00
+Jesper: 10:00-16:00 (6 hours)
+Linus: 10:00-16:00 (6 hours)
+Markus: 12:00-16:00 (4 hours)
+Samuel: 10:00-17:00 (7 hours)
