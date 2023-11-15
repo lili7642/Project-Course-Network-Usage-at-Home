@@ -32,7 +32,16 @@ Samuel: 12:00-16:00 (4 hours)
 
 #### Tuesday 14/11
 Meeting with Mike and Martin. Sat with the code. Got an OK to use WhoIs and other services due to the dataset being in its third itteration aka hard to triangulate the client. Starting looking at reverse DNS lookups.
+
 Jesper: 13:30-16:00 (2.5 hours)
 Linus: 13:30-16:00 (2.5 hours)
 Markus: 13:30-16:00 (2.5 hours)
 Samuel: 13:30-16:00 (2.5 hours)
+
+#### Wednesday 14/11
+
+
+Jesper: 10:30
+Linus: 10:
+Markus: 10:
+Samuel: 10:30
