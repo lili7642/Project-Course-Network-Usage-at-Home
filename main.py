@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from datetime import datetime, timedelta
+import matplotlib.pyplot as plt
 
 
 print("Hello World!")
@@ -25,7 +26,7 @@ df[['Dst IP Addr', 'Dst Port']] = df['Dst IP Addr:Port'].str.split(':', n=1, exp
 df = df.drop(columns=["Src IP Addr:Port", "Dst IP Addr:Port","Flows"])
 # Rename columns
 df = df.rename(columns={"seen": "Time", "Date first": "Date"})
-print(df.head(415))
+# print(df.head(415))
 
 ## ====================================================================
 
@@ -55,14 +56,26 @@ def create_seconds_column(df):
 
 df_test = df.copy()
 
+print("\nCreating new column...")
 create_seconds_column(df_test)
 
 # print(df_test)
 
-csv_file = "pilot4.csv"
+# csv_file = "pilot4.csv"
 
-df_test.to_csv(f_path + csv_file, sep="\t")
+# df_test.to_csv(f_path + csv_file, sep="\t")
 
+data19 = df_test.drop(df_test[df_test["Date"] != "2023-10-19"].index)
+data19 = data19.drop(data19[data19["Src IP Addr"] == "192.168.8.177"].index)
+
+print(data19.head(20))
+
+groups = data19.groupby("Src IP Addr")
+
+for name, group in groups:
+    plt.plot(group.Seconds, group.Bytes, marker='o', linestyle='', markersize=6, label=name)
+
+plt.show()
 
 ## ========= IMPLEMENT AUTOMATED REVERSE DNS LOOKUP ===================
 
