@@ -41,7 +41,7 @@ Samuel: 13:30-16:00 (2.5 hours)
 #### Wednesday 14/11
 
 
-Jesper: 10:30
-Linus: 10:
-Markus: 10:
-Samuel: 10:30
+Jesper: 10:00
+Linus: 10:00
+Markus: 10:00
+Samuel: 10:00
