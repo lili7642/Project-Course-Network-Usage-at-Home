@@ -1,40 +1,44 @@
 import os
 import pandas as pd
+import numpy as np
 from datetime import datetime, timedelta
+
+from sklearn.cluster import DBSCAN
 import matplotlib.pyplot as plt
 
+# Import dataset as panda dataframe, skip last rows with text
+data = pd.read_fwf("..\\pilot3.txt")
+data = data.iloc[:-4] #Removes the summary lines
+data = data.loc[:, ~data.columns.str.contains('^Unnamed')]
 
-print("Hello World!")
+# Split IP address and port to two columns, and drops the old column
+data[['Src IP Addr', 'Src Port']] = data['Src IP Addr:Port'].str.split(':', n=1, expand=True)
+data[['Dst IP Addr', 'Dst Port']] = data['Dst IP Addr:Port'].str.split(':', n=1, expand=True)
+data = data.drop(columns=["Src IP Addr:Port", "Dst IP Addr:Port","Flows"])
+data = data.rename(columns={"seen": "Time", "Date first": "Date"})
 
-## ================= READING DATA ====================================
+def convert_bytes(value):
+    multipliers = {'K': 1000, 'M': 1000000, 'G': 1000000000}
 
-current_directory = os.path.dirname(__file__)
-f_path = current_directory + "/../../project_course_data/"
-f_name = "pilot3.txt"
+    # Split the value into numerical part and prefix (if present)
+    parts = value.split()
+    num_part = float(parts[0]) #if parts[0].isdigit() else None
+    prefix = parts[1] if len(parts) > 1 else None
 
-# import dataset as panda dataframe, skip last rows with text
-df = pd.read_fwf(f_path + f_name, nrows=100426)
-# add option for viewing all column
-pd.set_option('display.max_columns', None)
-# remove column with "->"
-df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
+    # Check if a valid prefix is present
+    if prefix and prefix in multipliers:
+        return num_part * multipliers[prefix]
+    elif num_part is not None:
+        # If no valid prefix is found but there is a numerical part, return it as is
+        return num_part
+    else:
+        # If neither numerical part nor valid prefix is found, return the original value
+        return float(value)
 
-# Split IP address and port to two columns
-df[['Src IP Addr', 'Src Port']] = df['Src IP Addr:Port'].str.split(':', n=1, expand=True)
-df[['Dst IP Addr', 'Dst Port']] = df['Dst IP Addr:Port'].str.split(':', n=1, expand=True)
-"Drop old combined column"
-df = df.drop(columns=["Src IP Addr:Port", "Dst IP Addr:Port","Flows"])
-# Rename columns
-df = df.rename(columns={"seen": "Time", "Date first": "Date"})
-# print(df.head(415))
+# Apply the conversion function to the 'Bytes' column
+data['Bytes'] = data['Bytes'].apply(convert_bytes)
 
-## ====================================================================
-
-
-
-
-
-
+# Create column with global seconds
 def create_seconds_column(df):
 
     def create_datetime(date_str, time_str):
@@ -53,31 +57,47 @@ def create_seconds_column(df):
     
     df["Seconds"] = df.apply(lambda row: seconds_diff(create_datetime(row["Date"], row["Time"]), first_time=first_time), axis = 1)
 
+create_seconds_column(data)
 
-df_test = df.copy()
+# Orders the data by time in ascending order
+data = data.sort_values(by='Seconds', ascending=True)
 
-print("\nCreating new column...")
-create_seconds_column(df_test)
+# Reset the index
+data = data.reset_index(drop=True)
 
-# print(df_test)
+# Find clients IP address
+client = data['Src IP Addr'].value_counts().idxmax()
 
-# csv_file = "pilot4.csv"
+# Initialize 'Host IP'-column from 'Src Ip Addr'
+data['Host IP'] = data['Src IP Addr']
 
-# df_test.to_csv(f_path + csv_file, sep="\t")
+# If the destination IP is not equal to the clients IP, adds it to 'Host IP'-column
+for index, row in data.iterrows():
+    if row['Dst IP Addr'] != client:
+        data.at[index, 'Host IP'] = row['Dst IP Addr']
 
-data19 = df_test.drop(df_test[df_test["Date"] != "2023-10-19"].index)
-data19 = data19.drop(data19[data19["Src IP Addr"] == "192.168.8.177"].index)
+# Initialize a 'Group' column with NaN values
+data['Group'] = float('nan')
 
-print(data19.head(20))
+# Gives the flows happening close to each other the same group number
+group_counter = 0
+t = 0.5
+for i in range(len(data) - 1):
+    if data.iloc[i + 1]['Seconds'] - data.iloc[i]['Seconds'] <= t:
+        if data.iloc[i]['Seconds'] - data.iloc[i-1]['Seconds'] > t:# If this is a new grouping, increase group_counter by one
+            group_counter += 1
+        data.at[i + 1, 'Group'] = group_counter
+        data.at[i, 'Group'] = group_counter
 
-groups = data19.groupby("Src IP Addr")
+# Reads host name
+host_data = pd.read_csv('..\\hostName.csv', delimiter='\t')
 
-for name, group in groups:
-    plt.plot(group.Seconds, group.Bytes, marker='o', linestyle='', markersize=6, label=name)
+# Merges the two dataframes to contain the correct Host name
+data = pd.merge(data, host_data, left_on='Host IP', right_on='IP_addr', how='left')
 
-plt.show()
+# Drop unnecesary columns
+data = data.drop(['IP_addr', 'Unnamed: 0'], axis=1)
 
-## ========= IMPLEMENT AUTOMATED REVERSE DNS LOOKUP ===================
+print(data)
 
 
-## ====================================================================
