@@ -53,3 +53,12 @@ Jesper:
 Linus: 
 Markus: 
 Samuel: 11:00-15:00 (4 hours)
+
+#### Monday 20/11
+DNS lookup using whois 
+
+Jesper: 13:00-17:30 (4.5 hours)
+Linus: 13:00-17:30 (4.5 hours)
+Markus: 12:30-17:30 (5 hours)
+Samuel: 12:30-17:30 (5 hours)
+
