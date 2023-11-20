@@ -7,7 +7,7 @@ from sklearn.cluster import DBSCAN
 import matplotlib.pyplot as plt
 
 # Import dataset as panda dataframe, skip last rows with text
-data = pd.read_fwf("..\\pilot3.txt")
+data = pd.read_fwf("../Data/pilot3.txt")
 data = data.iloc[:-4] #Removes the summary lines
 data = data.loc[:, ~data.columns.str.contains('^Unnamed')]
 
@@ -64,6 +64,11 @@ data = data.sort_values(by='Seconds', ascending=True)
 
 # Reset the index
 data = data.reset_index(drop=True)
+
+# Changes Duration column to float
+data['Duration'] = data['Duration'].astype(float)
+# Relation between duration and bytes
+data['Rate'] = data['Bytes']/data['Duration'].replace(0, pd.NaT)
 
 # Find clients IP address
 client = data['Src IP Addr'].value_counts().idxmax()
