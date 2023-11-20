@@ -20,8 +20,8 @@ pd.set_option('display.max_columns', None)
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
 
 # Split IP address and port to two columns
-df[['Src IP Addr', 'Src Port']] = df['Src IP Addr:Port'].str.split(':', n=1, expand=True)
-df[['Dst IP Addr', 'Dst Port']] = df['Dst IP Addr:Port'].str.split(':', n=1, expand=True)
+df[['Src_IP_Addr', 'Src_Port']] = df['Src IP Addr:Port'].str.split(':', n=1, expand=True)
+df[['Dst_IP_Addr', 'Dst_Port']] = df['Dst IP Addr:Port'].str.split(':', n=1, expand=True)
 "Drop old combined column"
 df = df.drop(columns=["Src IP Addr:Port", "Dst IP Addr:Port","Flows"])
 # Rename columns
@@ -30,11 +30,27 @@ df = df.rename(columns={"seen": "Time", "Date first": "Date"})
 
 ## ====================================================================
 
+## ====================== CORRECTING BYTES ============================
 
+def convert_bytes(value):
+    multiplier = {'K': 1e3, 'M': 1e6, 'G': 1e9, 'T': 1e12, 'P': 1e15}
 
+    # Split value into numerical part and prefix (if present)
+    parts = value.split()
+    num_part = float(parts[0])
+    prefix = parts[1] if len(parts) > 1 else None
 
+    # Check if a valid prefix is present
+    if prefix and prefix in multiplier:
+        return num_part * multiplier[prefix]
+    elif num_part is not None:
+        return num_part
+    else:
+        return float(value)
 
+## ====================================================================
 
+## ================ COVERT TIME TO SECOND AFTER 0 ===================== 
 def create_seconds_column(df):
 
     def create_datetime(date_str, time_str):
@@ -53,6 +69,7 @@ def create_seconds_column(df):
     
     df["Seconds"] = df.apply(lambda row: seconds_diff(create_datetime(row["Date"], row["Time"]), first_time=first_time), axis = 1)
 
+## ================ COVERT TIME TO SECOND AFTER 0 ===================== 
 
 df_test = df.copy()
 
@@ -61,21 +78,24 @@ create_seconds_column(df_test)
 
 # print(df_test)
 
-# csv_file = "pilot4.csv"
+csv_file = "csv_data.csv"
+df_test = df_test.sort_values(by=['Seconds'])
+df_test['Bytes'] = df_test['Bytes'].apply(convert_bytes)
+df_test['Packets'] = df_test['Packets'].apply(convert_bytes)
 
-# df_test.to_csv(f_path + csv_file, sep="\t")
+df_test.to_csv(f_path + csv_file, sep="\t", index = False)
 
 data19 = df_test.drop(df_test[df_test["Date"] != "2023-10-19"].index)
-data19 = data19.drop(data19[data19["Src IP Addr"] == "192.168.8.177"].index)
+data19 = data19.drop(data19[data19["Src_IP_Addr"] == "192.168.8.177"].index)
 
 print(data19.head(20))
 
-groups = data19.groupby("Src IP Addr")
+# groups = data19.groupby("Src_IP_Addr")
 
-for name, group in groups:
-    plt.plot(group.Seconds, group.Bytes, marker='o', linestyle='', markersize=6, label=name)
+# for name, group in groups:
+#     plt.plot(group.Seconds, group.Bytes, marker='o', linestyle='', markersize=6, label=name)
 
-plt.show()
+# plt.show()
 
 ## ========= IMPLEMENT AUTOMATED REVERSE DNS LOOKUP ===================
 
