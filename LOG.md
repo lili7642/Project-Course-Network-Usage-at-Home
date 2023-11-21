@@ -47,15 +47,15 @@ Markus: 12:00-16:00 (4 hours)
 Samuel: 10:00-17:00 (7 hours)
 
 #### Friday 17/11
-Grouped by time, merged hostname with data.
+We experimented with grouping the data by time, as well as with k-means. We also merged some domain names from another file with the data.
 
-Jesper: 
+Jesper: 4 h
 Linus: 
 Markus: 
 Samuel: 11:00-15:00 (4 hours)
 
 #### Monday 20/11
-DNS lookup using whois 
+Automated DNS lookup using the python modules "ipwhois" and "socket". Resulting dataset now contains normalized timestamp in seconds, domain names and organization, in addition to original data.
 
 Jesper: 13:00-17:30 (4.5 hours)
 Linus: 13:00-17:30 (4.5 hours)
