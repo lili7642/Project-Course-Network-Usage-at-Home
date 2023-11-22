@@ -54,6 +54,8 @@ Linus:
 Markus: 
 Samuel: 11:00-15:00 (4 hours)
 
+### Week 47
+
 #### Monday 20/11
 Automated DNS lookup using the python modules "ipwhois" and "socket". Resulting dataset now contains normalized timestamp in seconds, domain names and organization, in addition to original data.
 
@@ -62,3 +64,16 @@ Linus: 13:00-17:30 (4.5 hours)
 Markus: 12:30-17:30 (5 hours)
 Samuel: 12:30-17:30 (5 hours)
 
+#### Tuesday 21/11
+Meeting with Mike AND Martin. Got the Gl.net router. Wrote some on the repport
+
+Jesper: 13:00-16:30 (3.5 hours)
+Linus: 13:00-16:30 (3.5 hours)
+Markus: 13:00-16:30 (3.5 hours)
+Samuel: 13:00-16:30 (3.5 hours)
+
+#### Wednesday 22/11
+Gathered data for classification (Without adblocker), mostly websites, only on the computer
+Linus: 13:00-18:00 (5 hours)
+Markus: 13:00-18:00 (5 hours)
+Samuel: 13:00-18:00 (5 hours)
