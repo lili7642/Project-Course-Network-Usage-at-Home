@@ -38,10 +38,64 @@ Linus: 13:30-16:00 (2.5 hours)
 Markus: 13:30-16:00 (2.5 hours)
 Samuel: 13:30-16:00 (2.5 hours)
 
-#### Wednesday 14/11
+#### Wednesday 15/11
+Continued to preprocess data. Used socket for reverse DNS lookup, and manually did some using dig. Began doing a DB-scan for clustering flows based on time. Worked on the report.
+
+Jesper: 10:00-16:00 (6 hours)
+Linus: 10:00-16:00 (6 hours)
+Markus: 12:00-16:00 (4 hours)
+Samuel: 10:00-17:00 (7 hours)
+
+#### Friday 17/11
+We experimented with grouping the data by time, as well as with k-means. We also merged some domain names from another file with the data.
+
+Jesper: 4 h
+Linus: 
+Markus: 
+Samuel: 11:00-15:00 (4 hours)
+
+### Week 47
+
+#### Monday 20/11
+Automated DNS lookup using the python modules "ipwhois" and "socket". Resulting dataset now contains normalized timestamp in seconds, domain names and organization, in addition to original data.
+
+Jesper: 13:00-17:30 (4.5 hours)
+Linus: 13:00-17:30 (4.5 hours)
+Markus: 12:30-17:30 (5 hours)
+Samuel: 12:30-17:30 (5 hours)
+
+#### Tuesday 21/11
+Meeting with Mike AND Martin. Got the Gl.net router. Wrote some on the repport
+
+Jesper: 13:00-16:30 (3.5 hours)
+Linus: 13:00-16:30 (3.5 hours)
+Markus: 13:00-16:30 (3.5 hours)
+Samuel: 13:00-16:30 (3.5 hours)
+
+#### Wednesday 22/11
+Gathered data for classification (Without adblocker), mostly websites, only on the computer
+Linus: 13:00-18:00 (5 hours)
+Markus: 13:00-18:00 (5 hours)
+Samuel: 13:00-18:00 (5 hours)
+
+#### Thursday 23/11
+
+Markus:
+
+#### Friday 24/11
+Read some articles, gathered more data (with adblocker)
+Linus: 15:00-18:00 (3 hours)
+Markus:
+Samuel: 14:00-18:00 (4 hours)
+
+### Week 48
+
+#### Monday 27/11
+Merged different data gathering sessions into one large file and classified it (only to correct website). Lecture with Kristina about oral presentation.
+
+Jesper: 11:00-
+Linus: 11:00-16:00 (5 hours)
+Markus: 11:00-16:00 (5 hours)
+Samuel: 11:00-16:00 (5 hours)
 
 
-Jesper: 10:00
-Linus: 10:00
-Markus: 10:00
-Samuel: 10:00
