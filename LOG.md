@@ -77,3 +77,25 @@ Gathered data for classification (Without adblocker), mostly websites, only on t
 Linus: 13:00-18:00 (5 hours)
 Markus: 13:00-18:00 (5 hours)
 Samuel: 13:00-18:00 (5 hours)
+
+#### Thursday 23/11
+
+Markus:
+
+#### Friday 24/11
+Read some articles, gathered more data (with adblocker)
+Linus: 15:00-18:00 (3 hours)
+Markus:
+Samuel: 14:00-18:00 (4 hours)
+
+### Week 48
+
+#### Monday 27/11
+Merged different data gathering sessions into one large file and classified it (only to correct website). Lecture with Kristina about oral presentation.
+
+Jesper: 11:00-
+Linus: 11:00-16:00 (5 hours)
+Markus: 11:00-16:00 (5 hours)
+Samuel: 11:00-16:00 (5 hours)
+
+
