@@ -10,12 +10,16 @@ print("Hello World!")
 
 current_directory = os.path.dirname(__file__)
 f_path = current_directory + "/../../project_course_data/"
-f_name = "pilot3.txt"
+f_name = "owndataset.txt"
 
 # import dataset as panda dataframe, skip last rows with text
-df = pd.read_fwf(f_path + f_name, nrows=100426)
+df = pd.read_fwf(f_path + f_name, nrows=739)
+# df = pd.read_csv(f_path + f_name, delimiter ="\t", header=0)
+
+print(df.head())
 # add option for viewing all column
 pd.set_option('display.max_columns', None)
+
 # remove column with "->"
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
 
@@ -23,7 +27,7 @@ df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
 df[['Src_IP_Addr', 'Src_Port']] = df['Src IP Addr:Port'].str.split(':', n=1, expand=True)
 df[['Dst_IP_Addr', 'Dst_Port']] = df['Dst IP Addr:Port'].str.split(':', n=1, expand=True)
 "Drop old combined column"
-df = df.drop(columns=["Src IP Addr:Port", "Dst IP Addr:Port","Flows"])
+df = df.drop(columns=["Src IP Addr:Port", "Dst IP Addr:Port"])#,"Flows"])
 # Rename columns
 df = df.rename(columns={"seen": "Time", "Date first": "Date"})
 # print(df.head(415))
@@ -74,14 +78,14 @@ def create_seconds_column(df):
 df_test = df.copy()
 
 print("\nCreating new column...")
-create_seconds_column(df_test)
+# create_seconds_column(df_test)
 
 # print(df_test)
 
-csv_file = "csv_data.csv"
-df_test = df_test.sort_values(by=['Seconds'])
-df_test['Bytes'] = df_test['Bytes'].apply(convert_bytes)
-df_test['Packets'] = df_test['Packets'].apply(convert_bytes)
+csv_file = "csv_markus_data.csv"
+# df_test = df_test.sort_values(by=['Seconds'])
+# df_test['Bytes'] = df_test['Bytes'].apply(convert_bytes)
+# df_test['Packets'] = df_test['Packets'].apply(convert_bytes)
 
 df_test.to_csv(f_path + csv_file, sep="\t", index = False)
 

@@ -6,24 +6,27 @@ import matplotlib.pyplot as plt
 
 current_directory = os.path.dirname(__file__)
 f_path = current_directory + "/../../project_course_data/"
-csv_filename = "csv_data.csv"
+# csv_filename = "csv_data.csv"
+csv_filename = "data_wgroups.csv"
 
-data = pd.read_csv(f_path + csv_filename, sep="\t")
 
-# data = data.drop(columns=["Duration"] == 0.0)
-data = data.drop(data[data.Bytes > 60000].index)
-# data = data.drop(data[data.Bytes > 1e6].index)
+data = pd.read_csv(f_path + csv_filename, sep="\t",na_filter=True)
+
+# data = data.drop(columns=["Date"] != "2023-10-19")
+data = data.drop(data[data.Date != "2023-10-19"].index)
+data = data.drop(data[data.Bytes > 1e6].index)
 # print(data.head(100))
 # dataNew = data.drop(data[data["Src_IP_Addr"] == "192.168.8.177"].index)
 
 
-groups = data.groupby('Proto')
-fig, ax = plt.subplots(figsize=(18,6))
+groups = data.groupby('Group')
+# fig, ax = plt.subplots(figsize=(18,6))
 for name, group in groups:
-    plt.plot(group.Seconds, group.Bytes, marker='o', linestyle='', markersize=5, label=name)
+    plt.plot(group.Seconds, group.Bytes, marker='o', linestyle='', markersize=5)
     # group.plot(x="Seconds", y="Bytes", marker='o', kind="scatter",ax=ax, label=name)
 # data.plot(x="Seconds", y="Bytes", kind="scatter")#, c="Src IP Addr", cmap='gray') 
 
+print(data)
 
 # data19 = data.drop(data[data["Date"] != "2023-10-19"].index)
 
