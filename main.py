@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
-
+import numpy as np
 
 print("Hello World!")
 
@@ -70,12 +70,20 @@ data19 = data19.drop(data19[data19["Src IP Addr"] == "192.168.8.177"].index)
 
 print(data19.head(20))
 
-groups = data19.groupby("Src IP Addr")
+# groups = data19.groupby("Src IP Addr")
 
-for name, group in groups:
-    plt.plot(group.Seconds, group.Bytes, marker='o', linestyle='', markersize=6, label=name)
+# for name, group in groups:
+#     plt.plot(group.Seconds, group.Bytes, marker='o', linestyle='', markersize=6, label=name)
 
-plt.show()
+# plt.show()
+
+uniques = set(np.concatenate([df["Src IP Addr"].unique(), df["Dst IP Addr"].unique()]))
+print(uniques)
+csv_file_unique = "unique.txt"
+
+with open(f_path + csv_file_unique, "w") as f:
+    for value in list(uniques):
+        f.write(str(value) + "\n")
 
 ## ========= IMPLEMENT AUTOMATED REVERSE DNS LOOKUP ===================
 
