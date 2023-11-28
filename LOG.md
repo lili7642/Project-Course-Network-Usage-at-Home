@@ -91,11 +91,17 @@ Samuel: 14:00-18:00 (4 hours)
 ### Week 48
 
 #### Monday 27/11
-Merged different data gathering sessions into one large file and classified it (only to correct website). Lecture with Kristina about oral presentation.
+Merged different data gathering sessions into one large file and classified it (only to correct website). Lecture with Kristina about oral presentation. Made a code to establish which ports were used and a tokenizer for domain names.
 
-Jesper: 11:00-
+Jesper: 11:00-17:00 (6 hours)
 Linus: 11:00-16:00 (5 hours)
 Markus: 11:00-16:00 (5 hours)
-Samuel: 11:00-16:00 (5 hours)
+Samuel: 11:00-17:30 (6.5 hours)
 
+#### Tuesday 28/11
+Mandatory lecture by Stefan and Maya about ethics and rapport writing. 
 
+Jesper: 13:15-
+Linus: 13:15-15:15 (2 hours)
+Markus: 13:15-
+Samuel: 13:15-
