@@ -105,3 +105,8 @@ Jesper: 13:15-17:45 (4.5 hours)
 Linus: 13:15-15:15 (2 hours)
 Markus: 13:15-17:45 (4.5 hours)
 Samuel: 13:15-17:45 (4.5 hours)
+
+#### Wednesday 29/11
+Reading on neural network performance and tuneing with different algorithems and adding a section in the report on data processing pipeline.
+
+Jesper: 11:30-16:00 (4.5 hours)
