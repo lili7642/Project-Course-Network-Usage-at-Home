@@ -99,7 +99,7 @@ Markus: 11:00-16:00 (5 hours)
 Samuel: 11:00-17:30 (6.5 hours)
 
 #### Tuesday 28/11
-Mandatory lecture by Stefan and Maya about ethics and rapport writing. Added a first implementation of neural network that got 70% accuracy on our own dataset.
+Mandatory lecture by Stefan and Maya about ethics and rapport writing. Added a first implementation of neural network that got 60-70% accuracy on our own dataset.
 
 Jesper: 13:15-17:45 (4.5 hours)
 Linus: 13:15-15:15 (2 hours)
@@ -110,3 +110,11 @@ Samuel: 13:15-17:45 (4.5 hours)
 Reading on neural network performance and tuneing with different algorithems and adding a section in the report on data processing pipeline.
 
 Jesper: 11:30-16:00 (4.5 hours)
+
+#### Thursday
+Were on poster lesson, worked on ML-model. We worked on implementing an "Unsure" classifier, and duration intervals.
+
+Jesper: 13:15-17:15 (4 hours)
+Linus: 13:15-15:15 (2 hours)
+Markus: 13:15-17:45 (4.5 hours)
+Samuel: 13:15-17:45 (4.5 hours)
