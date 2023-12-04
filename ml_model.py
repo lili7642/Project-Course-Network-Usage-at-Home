@@ -89,7 +89,7 @@ Ytest = test["Label"]
 n = data["Label"].value_counts()
 print(n)
 
-clf = MLPClassifier(solver='adam',alpha=1e-5, hidden_layer_sizes=(10,10,15), random_state=1)
+clf = MLPClassifier(solver='adam',alpha=1e-5, hidden_layer_sizes=(15,15), random_state=1)
 
 model = clf.fit(Xtrain, Ytrain)
 
