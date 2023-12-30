@@ -4,7 +4,7 @@ import torch.optim as optim
 
 # NETWORK CLASS
 class Net(nn.Module):
-    def __init__(self, input_size, h1, h2, h3, h4, output_size):
+    def __init__(self, input_size, h1, h2, h3, h4, h5, h6, output_size):
         super(Net, self).__init__()
         dropoutrate = 0.5
         self.fc1 = nn.Linear(input_size, h1)
@@ -21,7 +21,14 @@ class Net(nn.Module):
         self.fc4 = nn.Linear(h3, h4)
         self.relu4 = nn.ReLU()
 
-        self.fc5 = nn.Linear(h4, output_size)
+        self.fc5 = nn.Linear(h4, h5)
+        self.relu5 = nn.ReLU()
+        self.dropout3 = nn.Dropout(dropoutrate)
+
+        self.fc6 = nn.Linear(h5, h6)
+        self.relu6 = nn.ReLU()
+
+        self.fc7 = nn.Linear(h6, output_size)
 
     def forward(self, x):
         x = self.fc1(x)
@@ -39,4 +46,11 @@ class Net(nn.Module):
         x = self.relu4(x)
 
         x = self.fc5(x)
+        x = self.relu5(x)
+        x = self.dropout3(x)
+
+        x = self.fc6(x)
+        x = self.relu6(x)
+
+        x = self.fc7(x)
         return x
